@@ -1,0 +1,11 @@
+{
+  "_comment": "Single source of truth for the claim status contract. Read by the claims-service integration tests and the UI parity test so the layers cannot drift apart.",
+  "statuses": ["SUBMITTED", "UNDER_REVIEW", "APPROVED", "REJECTED", "CLOSED"],
+  "allowed": {
+    "SUBMITTED": ["UNDER_REVIEW", "REJECTED"],
+    "UNDER_REVIEW": ["APPROVED", "REJECTED", "SUBMITTED"],
+    "APPROVED": ["CLOSED"],
+    "REJECTED": ["CLOSED"],
+    "CLOSED": []
+  }
+}

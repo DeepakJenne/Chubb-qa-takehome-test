@@ -1,0 +1,31 @@
+{
+  "_comment": "Boundary cases for claim creation. Field names match the API request. Text values are generated as leadingSpaces spaces followed by length 'a' characters; dates are relative to today. Used by API integration tests and UI schema parity tests.",
+  "claimAmount": [
+    { "name": "smallest accepted amount (0.01)", "value": 0.01, "valid": true },
+    { "name": "below one cent (0.001)", "value": 0.001, "valid": false },
+    { "name": "zero", "value": 0, "valid": false },
+    { "name": "negative", "value": -1, "valid": false },
+    { "name": "largest accepted amount (1,000,000)", "value": 1000000, "valid": true },
+    { "name": "just above the maximum (1,000,000.01)", "value": 1000000.01, "valid": false }
+  ],
+  "description": [
+    { "name": "9 characters", "length": 9, "valid": false },
+    { "name": "10 characters", "length": 10, "valid": true },
+    { "name": "1000 characters", "length": 1000, "valid": true },
+    { "name": "1001 characters", "length": 1001, "valid": false },
+    { "name": "5 real characters padded with 10 leading spaces", "length": 5, "leadingSpaces": 10, "valid": false }
+  ],
+  "incidentLocation": [
+    { "name": "4 characters", "length": 4, "valid": false },
+    { "name": "5 characters", "length": 5, "valid": true },
+    { "name": "200 characters", "length": 200, "valid": true },
+    { "name": "201 characters", "length": 201, "valid": false },
+    { "name": "3 real characters padded with 3 leading spaces", "length": 3, "leadingSpaces": 3, "valid": false }
+  ],
+  "incidentDate": [
+    { "name": "today", "daysFromToday": 0, "valid": true },
+    { "name": "yesterday", "daysFromToday": -1, "valid": true },
+    { "name": "tomorrow", "daysFromToday": 1, "valid": false },
+    { "name": "one year ahead", "daysFromToday": 365, "valid": false }
+  ]
+}
